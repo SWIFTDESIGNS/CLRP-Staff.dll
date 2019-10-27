@@ -1,0 +1,19 @@
+client = new DiscordSocketClient();
+            commands = new CommandService();
+
+            services = new ServiceCollection()
+            .AddSingleton(client)
+            .AddSingleton(commands)
+            .BuildServiceProvider();
+
+            string token = "NjM3NzY0MTMxNzQyNjc5MDUw.XbS6KA.a0KR264fsd06lp9NNffM6tStEng";
+
+            client.Log += _client_Log;
+
+            await RegisterCommandsAsync();
+
+            await client.LoginAsync(TokenType.Bot, token);
+
+            await client.StartAsync();
+
+            await Task.Delay(-1);
